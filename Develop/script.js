@@ -7,37 +7,55 @@ const collectEmployees = function () {
   //let employeesArray = [firstName, lastName, salary]
   let employeesArray = [];
   let keepGoing = true;
-while (keepGoing) {
+  while (keepGoing) {
+    let firstName = prompt("Please add employee's first name:");
+    let lastName = prompt("Please add employee's last name:");
+    let salary = parseInt(prompt("Please add employee's salary:"));
 
-  let firstName = prompt("Please add employee's first name:");
-  let lastName = prompt("Please add employee's last name:");
-  let salary = prompt("Please add employee's salary:");
+    console.log("Employee Information: ", firstName, lastName, salary);
 
-  console.log("Employee Information: ", firstName, lastName, salary);
-
-  let employee = {
-    firstName: firstName,
-    lastName: lastName,
-    salary: salary,
-  };
-  employeesArray.push(employee);
-  keepGoing = confirm("Do you want to add more employees?");
-};
+    let employee = {
+      firstName: firstName,
+      lastName: lastName,
+      salary: salary,
+    };
+    employeesArray.push(employee);
+    keepGoing = confirm("Do you want to add more employees?");
+  }
   return employeesArray;
 };
+
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   // TODO: Calculate and display the average salary
-let totalSalary = employeesArray.reduce((sum , employee)=>sum+employee.salary , 0);
-let avargeSalary = totalSalary/employeesArray.length;
 
-console.log("Avarege salary for employees:");
+  let totalSalary = 0;
+  let numberOfEmployees = employeesArray.length
 
-};
+
+  for (let i = 0; i < employeesArray.length; i++) {
+    totalSalary += employeesArray[i].salary;
+  }
+
+//   // // let averageSalary = totalSalary / employeesArray.length;
+//   // // let averageSalaryWithTwoDecimals = averageSalary.toFixed(2);
+
+//   // console.log("Total salary for employees:", totalSalary);
+//   // console.log(`The average employee salary between our ${numberOfEmployees} is $${averageSalaryWithTwoDecimals}`);
+// };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
+
+  const getRandomEmployee =
+    employeesArray[Math.floor(Math.random() * employeesArray.length)];
+
+  console.log(
+    "Congratulations to",
+    getRandomEmployee,
+    "our random drawing winner!"
+  );
 };
 
 /*
